@@ -158,7 +158,7 @@ module Rack::Mount
         end
       end
 
-      request || [404, {'Content-Type' => 'text/html', 'X-Cascade' => 'pass'}, ['Not Found']]
+      request || [404, {'Content-Type' => 'application/json'}, ['{"error":{"message":"Your requested resource is not found"}']]
     end
 
     # Generates a url from Rack env and identifiers or significant keys.
