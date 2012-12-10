@@ -134,7 +134,7 @@ module Rack::Mount
     def call(env)
       raise 'route set not finalized' unless @recognition_graph
 
-      env[PATH_INFO] = Utils.normalize_path(env[PATH_INFO])
+      env[PATH_INFO] = Utils.normalize_path_without_squeeze(env[PATH_INFO])
 
       request = nil
       req = @request_class.new(env)

@@ -44,6 +44,14 @@ module Rack::Mount
     end
     module_function :normalize_path
 
+    def normalize_path_without_squeeze(path)
+      path = "/#{path}"
+      path.sub!(%r{/+\Z}, '')
+      path = '/' if path == ''
+      path
+    end
+    module_function :normalize_path_without_squeeze
+
     # Removes trailing nils from array.
     #
     #   pop_trailing_blanks!([1, 2, 3])           # => [1, 2, 3]
