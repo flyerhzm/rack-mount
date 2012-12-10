@@ -45,9 +45,8 @@ module Rack::Mount
     module_function :normalize_path
 
     def normalize_path_without_squeeze(path)
-      path = "/#{path}"
+      path = "/#{path}" unless path.start_with?("/")
       path.sub!(%r{/+\Z}, '')
-      path = '/' if path == ''
       path
     end
     module_function :normalize_path_without_squeeze
